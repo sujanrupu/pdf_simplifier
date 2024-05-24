@@ -1,6 +1,6 @@
-Flask==2.0.3
-PyMuPDF==1.19.6
-nltk==3.7
-transformers==4.10.3
-torch==2.2.0
+Flask
+PyMuPDF
+nltk
+transformers
+torch
 Gunicorn
