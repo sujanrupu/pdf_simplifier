@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Simplifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1 class="header">Upload a PDF to Simplify</h1>
+    
+    <form action="/upload" method="post" enctype="multipart/form-data" class="content2">
+        <input type="file" name="file" accept="application/pdf" class="file-input">
+        <button type="submit" class="btn">Upload</button>
+    </form>
+    {% if text %}
+    <div class="flexArea content">
+        <div class="left card">
+            <h2 class="card-title">Extracted Text:</h2>
+            <textarea rows="15" cols="90"  class="extract card-text">{{ text }}</textarea>
+            <form action="/paraphrase" method="post" class="content">
+                <input type="hidden" name="text" value="{{ text }}">
+                <button type="submit" class="btn1">Simplify</button>
+            </form>
+        </div>
+        <div class="right card">
+            <h2 class="card-title">Simplified Text:</h2>
+            <textarea rows="15" cols="90"  class="extract card-text">{{ paraphrased_text }}</textarea>
+        </div>
+    </div>
+    <h2 class="content1"><center>Keywords</center></h2>
+    <ul class="kwd content">
+        {% for keyword in keywords %}
+        <li class="kd">{{ keyword }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if paraphrased_text %}
+    {% endif %}
+</body>
+
+</html>
